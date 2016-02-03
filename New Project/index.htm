@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+<script type="text/javascript" src="javascript.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body ng-app="custApp" ng-controller="CustomerController">
+    <div class="container">
+    <div class="jumbotron">
+        <h2 style="color:gray">Customers</h2>
+        <div class="row">
+          <div class="col-sm-5">
+            <button class="btn"><span class="glyphicon glyphicon-th-large"></span> Card View</button>
+            <button class="btn"><span class="glyphicon glyphicon-list" onclick="change()"></span> List View</button>
+            <button class="btn" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> Add Customer</button>
+          </div>
+          <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New Customer</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr id="table">
+              <td><label>First Name</label></td>
+              <td><input type="text" class="form-control" ng-modal="newcustomer.fname" placeholder="Enter First Name"></td>
+            </tr>
+            <tr>
+              <td><label>Last Name</label></td>
+              <td><input type="text" class="form-control" ng-modal="newcustomer.lname" placeholder="Enter Last Name"></td>
+           </tr>
+           <tr>
+              <td><label>Email ID</label></td>
+              <td><input type="email" class="form-control" ng-modal="newcustomer.email" placeholder="Enter Email ID"></td>
+           </tr>
+          <tr>
+            <td><label>City</label></td>
+            <td><input type="text" class="form-control" ng-modal="newcustomer.city" placeholder="Enter your City"></td>
+          </tr>
+          <tr>
+            <td><label>Number of orders</label></td>
+            <td><input type="number" class="form-control" ng-modal="newcustomer.order" placeholder="Enter Number of Orders"></td>
+          </tr>
+          <tr>
+          <td><button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addCustomer()">Add</button>
+            </td>
+          </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+           <div class="col-sm-7" align="right">
+             <table>
+               <tr>
+                 <td>
+             <label style="font-size:20px"  >Filter &nbsp;</label>
+                 </td>
+                 <td>
+           <input type="text" class="form-control" ng-model="name">
+                 </td>
+               </tr>
+             </table>
+          </div>
+      </div>
+      
+    <div  id="repeatBlock" ng-repeat="cust in customers|filter:name" class="alert alert-warning fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" id="close">&times;</a>
+                <div id="header" class="col-sm-11">{{cust.fname}}</div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img class="icon" src="http://snag.gy/XrgFk.jpg" height="55" align="left">
+                 </div>
+                 <div class="col-sm-8">
+                   {{cust.fname+' '+cust.lname+' '+cust.email+' '+cust.city+' '+cust.order}}  
+                 </div>
+               </div>
+      </div>
+      </div>
+    </div>
+     
+  </body>
+</html>
