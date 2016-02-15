@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-md-4">
+		<h4><strong>Placement Drive</strong></h4>
+	</div>
+	<div class="col-md-5" align="right">
+		<h4><strong>Status</strong></h4>
+	</div>		
+</div>
+<hr>
+<div class="row" ng-repeat="data in content">
+	<div class="row">
+		<div class="col-sm-2" align="right" style="padding:10px;">
+			<img style="border:solid; border-width:5px; border-color:silver;" id="profile-pic" width="200" src="{{imgurl}}">
+		</div>
+		<div class="col-sm-6" style="color:blue;">
+			<div class="row" >
+				<h3>{{data.title}}</h3>
+			</div>
+			<div class="row" >
+					<h4> <span style="color:black;" class="fa fa-building"></span> {{data.name}}</h4>
+			</div>
+			<div class="row" style="color:black;">
+					<h4><span class="fa fa-clock-o"></span> {{data.date}}</h4>
+			</div>
+		</div>
+		<div class="col-sm-4" style="margin:20px 0 0 0;">
+			<div class="row progress" style="height:30px;">
+				<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="70" aria-valuemax="100" style="width:{{100/data.status}}%">
+					<h5>1/{{data.status}}</h5>
+				</div>
+			</div>
+			<div class="row">
+				<h4><span class="fa fa-tasks text-info"></span> Registered</h4>
+			</div>
+			<div class="row">
+				<h4>Registration is open</h4>
+			</div>
+			
+		</div>
+	</div>
+	<hr>
+</div>
